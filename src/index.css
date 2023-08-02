@@ -44,3 +44,17 @@
 @import url(./blocks/card/__trashcan/_type/card__trashcan_type_hidden.css);
 @import url(./blocks/card/__likes-number/card__likes-number.css);
 @import url(./blocks/profile/__avatar-button/profile__avatar-button.css);
+@import url(./blocks/auth/auth.css);
+@import url(./blocks/auth/__button/auth__button.css);
+@import url(./blocks/auth/__form/auth__form.css);
+@import url(./blocks/auth/__input-error/auth__input-error.css);
+@import url(./blocks/auth/__input/auth__input.css);
+@import url(./blocks/auth/__title/auth__title.css);
+@import url(./blocks/auth/__sign-up/auth__sign-up.css);
+@import url(./blocks/page-not-found/page-not-found.css);
+@import url(./blocks/page-not-found/__button/page-not-found__button.css);
+@import url(./blocks/popup/__container/_type/_infoToolTip.css);
+@import url(./blocks/popup/__heading/_type/_infoToolTip.css);
+@import url(./blocks/header/__container/header__container.css);
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__quit/header__quit.css);
