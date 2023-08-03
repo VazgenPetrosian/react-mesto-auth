@@ -16,7 +16,7 @@ function Header({ isLoggedIn, email, onSignOut }) {
       <img className="logo" src={logo} alt="Лого" />
       <div className="header__container">
         {location.pathname === "/" && isLoggedIn === true && (
-          <p className="header__email">{email}</p>
+          <p className="header__email header__email">{email}</p>
         )}
         {location.pathname === "/" && isLoggedIn === true && (
           <Link to="/sign-in" className="header__quit" onClick={onSignOut}>

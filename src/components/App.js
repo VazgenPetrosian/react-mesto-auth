@@ -4,7 +4,6 @@ import { Routes, Link, Route, Navigate, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { AppContext } from "../contexts/AppContext";
 import { usePopupClose } from "../hooks/usePopupClose";
-import "../index.css";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -200,24 +199,30 @@ function App() {
 
   const tokenCheck = React.useCallback(() => {
     const token = localStorage.getItem("token");
-    auth
-      .checkToken(token)
-      .then((res) => {
-        if (!res) {
-          return;
-        }
-        setEmail(res.data.email);
-        setIsLoggedIn(true);
-        navigate("/", { replace: true });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(token);
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((res) => {
+          if (!res) {
+            return;
+          }
+          setEmail(res.data.email);
+          setIsLoggedIn(true);
+          navigate("/", { replace: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    {
+      return;
+    }
   }, [navigate]);
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [navigate]);
 
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
@@ -311,6 +316,8 @@ function App() {
               onEscClose={handleEscClose}
               isRegistered={isRegistered}
               isLoggedIn={isLoggedIn}
+              succes={"Вы успешно зарегистрировались!"}
+              fail={"Что-то пошло не так! Попробуйте ещё раз."}
             />
           </div>
         </div>

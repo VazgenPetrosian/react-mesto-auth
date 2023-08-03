@@ -5,20 +5,9 @@ import galochka from "../images/galochka.svg";
 import error from "../images/error.svg";
 import { usePopupClose } from "../hooks/usePopupClose";
 
-function InfoToolTip({ isOpen, onClose, onEscClose, isRegistered }) {
+function InfoToolTip({ isOpen, onClose, succes, fail, isRegistered }) {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isOpen && isRegistered) {
-      document.addEventListener("keydown", onEscClose);
-      navigate("/sign-in", { replace: true });
-      return () => document.removeEventListener("keydown", onEscClose);
-    }
-    if (isOpen) {
-      document.addEventListener("keydown", onEscClose);
-      return () => document.removeEventListener("keydown", onEscClose);
-    }
-  }, [isOpen]);
-
+  usePopupClose(isOpen, onClose);
   function closePopup() {
     if (isRegistered) {
       navigate("/sign-in", { replace: true });
@@ -42,9 +31,7 @@ function InfoToolTip({ isOpen, onClose, onEscClose, isRegistered }) {
           alt="удачно или ошибка"
         />
         <h2 className="popup__heading popup__heading_type_infoToolTip">
-          {isRegistered
-            ? "Вы успешно зарегистрировались!"
-            : "Что-то пошло не так! Попробуйте ещё раз."}
+          {isRegistered ? `${succes}` : `${fail}`}
         </h2>
       </div>
     </div>
